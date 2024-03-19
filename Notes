@@ -1,0 +1,9 @@
+1. Fix the tables
+2. Add the changes for auto updation of createdAt, updatedAt timestamps
+3. Complete the settleup strategy code
+4. We need to add initialisation data
+5. Add the APIs for
+    * User registration
+    * Group creation
+    * adding an expense
+    * settleUp
