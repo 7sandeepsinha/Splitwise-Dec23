@@ -16,4 +16,13 @@ public class UserExpense extends BaseModel{
     private double amount;
     @Enumerated(EnumType.STRING)
     private UserExpenseType userExpenseType;
+
+    public UserExpense() {
+    }
+
+    public UserExpense(User user, double amount, UserExpenseType userExpenseType) {
+        this.user = user;
+        this.amount = amount;
+        this.userExpenseType = userExpenseType;
+    }
 }

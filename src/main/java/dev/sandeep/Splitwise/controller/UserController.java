@@ -1,5 +1,6 @@
 package dev.sandeep.Splitwise.controller;
 
+import dev.sandeep.Splitwise.dto.UserLoginRequestDTO;
 import dev.sandeep.Splitwise.dto.UserRegistrationRequestDTO;
 import dev.sandeep.Splitwise.entity.User;
 import dev.sandeep.Splitwise.exception.UserRegistrationInvalidDataException;
@@ -26,6 +27,13 @@ public class UserController {
         );
     }
 
+    @PostMapping("/login")
+    public ResponseEntity login(@RequestBody UserLoginRequestDTO userLoginRequestDTO){
+        validateUserLoginRequestDTO(userLoginRequestDTO);
+        User savedUser = userService.login(userLoginRequestDTO.getEmail(), userLoginRequestDTO.getPassword());
+        return ResponseEntity.ok(EntityDTOMapper.toDTO(savedUser));
+    }
+
     private void validateUserRegistrationRequestDTO(UserRegistrationRequestDTO requestDTO){
         // do both using regex
         //TODO : validate if the email is proper
@@ -35,5 +43,9 @@ public class UserController {
         requestDTO.getPassword() == null){
             throw new UserRegistrationInvalidDataException("Invalid sign up data");
         }
+    }
+
+    private void validateUserLoginRequestDTO(UserLoginRequestDTO userLoginRequestDTO){
+
     }
 }

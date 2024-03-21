@@ -1,9 +1,6 @@
 package dev.sandeep.Splitwise.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -19,7 +16,7 @@ public class Group extends BaseModel{
     private User createdBy;
     private LocalDateTime creationDate;
     private double totalAmountSpent;
-    @ManyToMany
+    @ManyToMany(mappedBy = "groups")
     private List<User> members;
     @OneToMany
     private List<Expense> expenses;
@@ -33,3 +30,4 @@ public class Group extends BaseModel{
 
           Group:User -> M:1
  */
+// break -> 9:56 PM

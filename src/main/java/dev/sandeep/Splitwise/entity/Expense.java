@@ -22,4 +22,16 @@ public class Expense extends BaseModel{
     private User addedBy;
     @OneToMany
     private List<UserExpense> userExpenses;
+
+    public Expense() {
+    }
+
+    public Expense(String description, double amount, LocalDateTime expenseTime, Currency currency, User addedBy, List<UserExpense> userExpenses) {
+        this.description = description;
+        this.amount = amount;
+        this.expenseTime = expenseTime;
+        this.currency = currency;
+        this.addedBy = addedBy;
+        this.userExpenses = userExpenses;
+    }
 }

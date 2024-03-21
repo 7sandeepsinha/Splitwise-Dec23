@@ -7,3 +7,51 @@
     * Group creation
     * adding an expense
     * settleUp
+
+One Way - Two Way Mapping
+
+One-way mapping :
+Auditorium Seats
+
+fetch auditorium from DB -> fetch seats for that auditorium
+fetch seat from DB -> fetch the auditorium for the seat
+
+As option is more likely, we choose 1way mapping, ie Auditorium has seats
+
+class Auditorium {
+    Seat seat;
+}
+
+class Seat{
+ //does not have auditorium attribute
+}
+
+Red Bus
+Two Way mapping :
+User Booking
+
+User profile -> list of bookings
+Booking -> booked by some user
+
+class User {
+    Booking booking;
+}
+
+class Booking {
+    User user;
+}
+
+Splitwise
+User Group
+2way
+User -> shows all the groups
+Group -> shows all the user
+
+Group Expense
+Group -> expense
+Expense -> group [ not required ]
+
+Two way mapping often leads to multiple table creation
+
+
+

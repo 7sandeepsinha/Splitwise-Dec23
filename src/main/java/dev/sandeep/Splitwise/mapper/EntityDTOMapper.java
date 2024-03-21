@@ -19,18 +19,23 @@ public class EntityDTOMapper {
 
         //conversion of user friends to friendList
         List<UserFriendResponseDTO> friendList = new ArrayList<>();
-        for(User friend: user.getFriends() ){
-            friendList.add(toFriendDTO(friend));
+        if(user.getFriends() != null) {
+            for (User friend : user.getFriends()) {
+                friendList.add(toFriendDTO(friend));
+            }
+            responseDTO.setFriendList(friendList);
         }
-        responseDTO.setFriendList(friendList);
 
-        //conversion of group to groupResponseDTO
-        List<GroupResponseDTO> groups = new ArrayList<>();
-        for(Group group: user.getGroups() ){
-            groups.add(toDTO(group));
+        if(user.getGroups() != null) {
+            //conversion of group to groupResponseDTO
+            List<GroupResponseDTO> groups = new ArrayList<>();
+            for (Group group : user.getGroups()) {
+                groups.add(toDTO(group));
+            }
+            responseDTO.setGroups(groups);
+
         }
-        responseDTO.setGroups(groups);
-        return  responseDTO;
+        return responseDTO;
     }
 
     public static UserFriendResponseDTO toFriendDTO(User user){
